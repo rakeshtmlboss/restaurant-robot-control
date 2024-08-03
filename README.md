@@ -1,4 +1,4 @@
-# restaurant-robot-control
+# Restaurant Robot Control
 
 ## Overview
 
@@ -17,3 +17,5 @@ This repository contains the code and assets for controlling a restaurant robot 
 
    ```bash
    git clone https://github.com/rakeshtmlboss/restaurant-robot-control.git
+
+
