@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Robot Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        .table {
+            margin: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Restaurant Robot Control</h1>
+
+        <div class="table">
+            <button class="button" onclick="handleOrder([1])">Order from Table 1</button>
+            <button class="button" onclick="handleOrder([2])">Order from Table 2</button>
+            <button class="button" onclick="handleOrder([3])">Order from Table 3</button>
+        </div>
+
+        <div class="table">
+            <button class="button" onclick="handleOrder([1, 2, 3])">Order from Tables 1, 2, 3</button>
+        </div>
+
+        <div id="status">Status: Idle</div>
+    </div>
+
+    <script>
+        async function updateStatus(status) {
+            document.getElementById('status').innerText = 'Status: ' + status;
+        }
+
+        async function handleOrder(tableNumbers) {
+            try {
+                await updateStatus('Processing order for tables: ' + tableNumbers.join(', '));
+                // Simulate sending order to the server
+                const response = await fetch('/processOrder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tables: tableNumbers })
+                });
+                const data = await response.json();
+                await updateStatus(data.message);
+            } catch (error) {
+                await updateStatus('Error processing order');
+            }
+        }
+    </script>
+</body>
+</html>
