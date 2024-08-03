@@ -11,11 +11,3 @@ This repository contains the code and assets for controlling a restaurant robot 
 - `bolt_iot.js`: Integration script for Bolt IoT.
 - `images/`: Directory containing images of CAD designs, simulations, and the real robot.
 
-## Setup
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/rakeshtmlboss/restaurant-robot-control.git
-
-
